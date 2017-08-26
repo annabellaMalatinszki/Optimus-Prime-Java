@@ -11,9 +11,26 @@ public class Main {
         if (userInput.hasNextInt()) {
 
             int max = userInput.nextInt();
-            int[] primes = getPrimes(max);
 
-            System.out.println("Primes smaller than " + max + " are: " + Arrays.toString(primes));
+            if(max == 0 || max == 1) {
+
+                System.out.println("There are no prime numbers smaller than " + max);
+            } else {
+
+                try {
+                    int[] primes = getPrimes(max);
+
+                    System.out.println("Primes smaller than " + max + " are: " + Arrays.toString(primes));
+
+                } catch (NegativeArraySizeException e) {
+
+                    System.err.println("NegativeArraySizeError: The maximum value must be a positive integer.");
+                }
+            }
+
+        } else {
+
+        System.out.println("Please enter a positive integer next time");
 
         }
     }
